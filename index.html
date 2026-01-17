@@ -1,2 +1,142 @@
-# login-signup-ui
-Login and Signup UI with validations
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login & Signup UI</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    width: 330px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #5a67d8;
+}
+
+#error {
+    color: red;
+    font-size: 13px;
+    text-align: center;
+}
+
+.switch {
+    text-align: center;
+    margin-top: 12px;
+    color: #667eea;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2 id="title">Login</h2>
+
+    <input type="text" id="name" placeholder="Full Name" style="display:none">
+
+    <input type="email" id="email" placeholder="Email">
+
+    <input type="password" id="password" placeholder="Password">
+
+    <input type="password" id="confirm" placeholder="Confirm Password" style="display:none">
+
+    <p id="error"></p>
+
+    <button onclick="submitForm()">Submit</button>
+
+    <p class="switch" onclick="toggleForm()">Don't have an account? Signup</p>
+</div>
+
+<script>
+let isLogin = true;
+
+function toggleForm() {
+    isLogin = !isLogin;
+
+    document.getElementById("title").innerText = isLogin ? "Login" : "Signup";
+    document.querySelector(".switch").innerText =
+        isLogin ? "Don't have an account? Signup" : "Already have an account? Login";
+
+    document.getElementById("name").style.display = isLogin ? "none" : "block";
+    document.getElementById("confirm").style.display = isLogin ? "none" : "block";
+    document.getElementById("error").innerText = "";
+}
+
+function validEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function submitForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+    const error = document.getElementById("error");
+
+    error.innerText = "";
+
+    if (!validEmail(email)) {
+        error.innerText = "Please enter valid email";
+        return;
+    }
+
+    if (password.length < 8) {
+        error.innerText = "Password must be at least 8 characters";
+        return;
+    }
+
+    if (!isLogin) {
+        if (name === "") {
+            error.innerText = "Name is required";
+            return;
+        }
+        if (password !== confirm) {
+            error.innerText = "Passwords do not match";
+            return;
+        }
+    }
+
+    alert(isLogin ? "Login Successful" : "Signup Successful");
+}
+</script>
+
+</body>
+</html>
