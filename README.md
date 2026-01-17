@@ -1,24 +1,18 @@
 # Login & Signup UI
 
-A simple and responsive Login and Signup user interface built using
-HTML, CSS, and JavaScript.
+This project contains a simple Login and Signup UI built using HTML, CSS, and JavaScript.
 
-## 🔗 Live Demo
-https://prasanthi-svg.github.io/login-signup-ui/
+## Features
+- Login page with email & password validation
+- Signup page with name, email & password validation
+- Clean and responsive UI
+- Client-side form validation
+- Hosted using GitHub Pages
 
-## ✨ Features
-- Clean and modern UI
-- Login & Signup forms
-- Form validation
-- Responsive design
-
-## 🛠️ Technologies Used
+## Technologies Used
 - HTML
 - CSS
 - JavaScript
 
-## 📸 Preview
-(Add screenshot here)
-
-## 👩‍💻 Author
-Prasanthi
+## Live Demo
+https://velpukondaprasanthi-svg.github.io/login-signup-ui/
